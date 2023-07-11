@@ -4,7 +4,9 @@ const mongoose=require('mongoose')
 PORT= 4050
 const cors=require('cors')
 
-app.use(cors())
+app.use(cors({
+    origin : "*"
+}))
 app.use(express.json())
 
 //db connection

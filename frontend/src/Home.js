@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import { NavLink } from 'react-router-dom';
@@ -8,6 +9,9 @@ const Home = () => {
     email:'',
     password:''
   });
+
+  let globalURL = 'https://user-management-bm1v.onrender.com'
+  let localURL = 'http://localhost:4050'
 const handleChnage=(event)=>{
   setInputUser(
     {
@@ -17,9 +21,10 @@ const handleChnage=(event)=>{
   );
 }
 const handleSubmit=async (event)=>{
+
   event.preventDefault();
   console.log(inputUser)
-  const res = await axios.post("http://localhost:4050/createuser", inputUser)
+  const res = await axios.post(`${globalURL}/createuser`, inputUser)
   console.log(res);
   FetchAlluser();
 
@@ -28,7 +33,7 @@ const handleSubmit=async (event)=>{
 //datafetching all
   const [userdata, setUserdata]=useState([])
   const FetchAlluser = async()=>{
-    const res=await axios.get("http://localhost:4050/readalluser")
+    const res=await axios.get(`${globalURL}/readalluser`)
     console.log(res)
     setUserdata(res.data);
   }
@@ -37,7 +42,7 @@ const handleSubmit=async (event)=>{
   },[])
 
   const handleDelete= async(id)=>{
-    const res= await axios.delete(`http://localhost:4050/deleteuser/${id}`);
+    const res= await axios.delete(`${globalURL}/deleteuser/${id}`);
     if(res.status===200){
       FetchAlluser()
     }

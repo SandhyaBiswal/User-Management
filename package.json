@@ -7,7 +7,7 @@
     "install-server" : "cd Backend && npm install",
     "start-server" : "cd Backend && node Server.js",
     "build-client" : "cd client && npm install",
-    "start-client": "cd client && npm run startvgit init",
+    "start-client": "cd client && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

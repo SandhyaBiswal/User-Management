@@ -4,11 +4,14 @@ import axios from 'axios';
 
 
 const Readuser = () => {
+  let localURL = 'http://localhost:4050'
+  let globalURL = 'https://user-management-bm1v.onrender.com'
+ 
     const {id} =useParams()
     //datafetching all
   const [userdata, setUserdata]=useState([])
   const Fetchsingleuser = async()=>{
-    const res=await axios.get(`http://localhost:4050/read/${id}`)
+    const res=await axios.get(`${globalURL}/read/${id}`)
     console.log(res)
     setUserdata(res.data);
   }
